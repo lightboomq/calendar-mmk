@@ -1,9 +1,12 @@
 let date = new Date();
 const arrMonths = ['January','February','March','April','May','June','Jule','August','September','October','November','December'];
 const arrMonthRu = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
-let currentMonth = arrMonths[date.getMonth()]
-let currentMonthRu = arrMonthRu[date.getMonth()]
 
+
+let currentMonth = arrMonths[date.getMonth()]; ;
+let currentMonthTwo = date.getMonth();
+let currentMonthRu = arrMonthRu[date.getMonth()]
+const nameMounth = document.createElement('div');
 let currentDay=date.getDate();
 
 const brigade = [
@@ -161,24 +164,72 @@ const brigade = [
     },   
 ]
 
-
 const select = document.querySelector('.select');
 
 select.addEventListener('change',(e)=>{
-    let index = +e.target.value;
-    let count = brigade[index][currentMonth].count;
-    let startWorkDay = brigade[index][currentMonth].startWorkDay;
-    let shift = brigade[index][currentMonth].shift;
-    let days = brigade[index][currentMonth].days;
+    getPropertyOfBrigade(e)
     
-    getBrigadeDate(count,startWorkDay,shift,days)
 });
 
 const calendar = document.querySelector('.calendar');
 const nameMonth = document.querySelector('.month');
 const daysWeek = document.querySelector('.days-grid');
 
-nameMonth.textContent=arrMonthRu[date.getMonth()];
+generateHeader();
+
+const switchMonthLeft = document.querySelector('.arrow-left');
+const switchMonthRight = document.querySelector('.arrow-right');
+let indexSelect;
+let count
+let startWorkDay
+let shift
+let days
+switchMonthLeft.addEventListener('click',()=>{
+    
+    
+    if(currentMonthTwo===0){
+        return;
+    }
+    else{
+        currentMonthTwo--
+    }
+    console.log(currentMonthTwo);
+    currentMonth = arrMonths[currentMonthTwo]
+    nameMounth.textContent=arrMonthRu[currentMonthTwo];
+    count = brigade[indexSelect][currentMonth].count;
+    startWorkDay = brigade[indexSelect][currentMonth].startWorkDay;
+    shift = brigade[indexSelect][currentMonth].shift;
+    days = brigade[indexSelect][currentMonth].days;
+    getBrigadeDate(count,startWorkDay,shift,days)
+})
+switchMonthRight.addEventListener('click',()=>{
+    
+    if(currentMonthTwo>10){
+        return;
+    }
+    else{
+        currentMonthTwo++
+    }
+    console.log(currentMonthTwo);
+    currentMonth = arrMonths[currentMonthTwo]
+    nameMounth.textContent=arrMonthRu[currentMonthTwo];
+    count = brigade[indexSelect][currentMonth].count;
+    startWorkDay = brigade[indexSelect][currentMonth].startWorkDay;
+    shift = brigade[indexSelect][currentMonth].shift;
+    days = brigade[indexSelect][currentMonth].days;
+    getBrigadeDate(count,startWorkDay,shift,days)
+})
+function getPropertyOfBrigade(e){
+    indexSelect = +e.target.value;
+    count = brigade[indexSelect][currentMonth].count;
+    startWorkDay = brigade[indexSelect][currentMonth].startWorkDay;
+    shift = brigade[indexSelect][currentMonth].shift;
+    days = brigade[indexSelect][currentMonth].days;
+    getBrigadeDate(count,startWorkDay,shift,days)
+}
+
+
+
 
 function getBrigadeDate(count,startWorkDay,shift,days){ 
     daysWeek.innerHTML='';
@@ -229,7 +280,18 @@ function getBrigadeDate(count,startWorkDay,shift,days){
 }
 
 
-
+function generateHeader(){
+    const arrowLeft = document.createElement('div');
+    const arrowRight = document.createElement('div');
+    arrowLeft.textContent='<'
+    arrowLeft.classList.add('arrow-left');
+    arrowRight.textContent='>';
+    arrowRight.classList.add('arrow-right');
+    nameMounth.textContent=arrMonthRu[date.getMonth()];
+    nameMonth.append(arrowLeft);
+    nameMonth.append(nameMounth);
+    nameMonth.append(arrowRight);
+}
 
 
 

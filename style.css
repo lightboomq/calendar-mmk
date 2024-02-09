@@ -34,6 +34,17 @@ body .main .calendar .month {
   align-items: center;
   color: white;
   background-color: #0188D1;
+  justify-content: space-around;
+}
+body .main .calendar .month .arrow-left {
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 24px;
+}
+body .main .calendar .month .arrow-right {
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 24px;
 }
 body .main .calendar .saturday {
   color: red;
@@ -54,7 +65,7 @@ body .main .days-grid .item {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  font-size: 16px;
+  font-size: 17px;
   height: 40px;
 }
 body .main .days-grid .node {
@@ -76,7 +87,7 @@ body .main .days-grid .node .night-block {
   width: 100%;
   background-color: rgb(0, 0, 0);
   color: white;
-  font-size: 14px;
+  font-size: 15px;
 }
 body .main .div-select {
   display: flex;
