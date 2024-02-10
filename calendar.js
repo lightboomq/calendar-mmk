@@ -1,4 +1,3 @@
-let date = new Date();
 const arrMonths =  ['January','February','March','April','May','June','Jule','August','September','October','November','December'];
 const arrMonthRu = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
 const brigade = [
@@ -155,7 +154,7 @@ const brigade = [
         },
     },   
 ]
-
+let date = new Date();
 const calendar = document.querySelector('.calendar');
 const nameMonth = document.querySelector('.month-text');
 const year = document.querySelector('.year-text');
@@ -164,10 +163,10 @@ const btnMoveMonthToLeft = document.querySelector('.img-arrow-left');
 const btnMoveMonthToRigth = document.querySelector('.img-arrow-right');
 const selectBrigade = document.querySelector('.select');
 
-let currentMonth = arrMonths[date.getMonth()]; ;
+let currentMonth = arrMonths[date.getMonth()];
 let currentMonthIndex= date.getMonth();
 let currentMonthRu = arrMonthRu[date.getMonth()];
-let currentDay=date.getDate();
+let currentDay=date.getDate()-1;
 
 nameMonth.textContent = currentMonthRu;
 year.textContent = date.getFullYear();
@@ -178,11 +177,18 @@ let count=brigade[indexSelect][currentMonth].count;
 let startWorkDay=brigade[indexSelect][currentMonth].startWorkDay;
 let shift=brigade[indexSelect][currentMonth].shift;
 let days=brigade[indexSelect][currentMonth].days;
+
+for(let i=0; i<4; i++){
+    brigade[i][currentMonth].flagCurrentDay=true;
+}
+
+
 getBrigadeDate(count,startWorkDay,shift,days);
 
 btnMoveMonthToLeft.addEventListener('click',()=>{
     currentMonthIndex===0?false:currentMonthIndex--;
     getSelectedMonth();
+    console.log(currentMonth);
     getBrigadeDate(count,startWorkDay,shift,days);
 });
 
@@ -213,7 +219,7 @@ function getBrigadeDate(count,startWorkDay,shift,days){
         let number = document.createElement('div');
         number.classList.add('item','node');
         number.textContent=i+1;
-        if(i===currentDay-1) number.style.backgroundColor='pink';
+        if(i===currentDay&&brigade[indexSelect][currentMonth].flagCurrentDay) number.style.backgroundColor='pink';
         daysWeek.append(number);
     }
 
