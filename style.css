@@ -34,17 +34,21 @@ body .main .calendar .month {
   align-items: center;
   color: white;
   background-color: #0188D1;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
-body .main .calendar .month .arrow-left {
-  cursor: pointer;
-  font-weight: 900;
-  font-size: 24px;
+body .main .calendar .month .month-year {
+  display: flex;
+  align-items: center;
+  height: 40px;
 }
-body .main .calendar .month .arrow-right {
+body .main .calendar .month .month-year .year-text {
+  margin-left: 5px;
+}
+body .main .calendar .month .img-arrow-left {
   cursor: pointer;
-  font-weight: 900;
-  font-size: 24px;
+}
+body .main .calendar .month .img-arrow-right {
+  cursor: pointer;
 }
 body .main .calendar .saturday {
   color: red;
@@ -67,6 +71,7 @@ body .main .days-grid .item {
   align-items: center;
   font-size: 17px;
   height: 40px;
+  border: 1px solid black;
 }
 body .main .days-grid .node {
   display: flex;

@@ -12,7 +12,14 @@
 <body>
     <div class="main">
         <div class="calendar">
-            <div class="month"></div>
+            <div class="month">
+                <img src="./img/arrow-left.svg" class="img-arrow-left"/>
+                <div class="month-year">
+                    <p class="month-text"></p>
+                    <p class="year-text"></p>
+                </div>
+                <img src="./img/arrow-right.svg" class="img-arrow-right"/>
+            </div>
             <div class="item monday">Пн</div>
             <div class="item secondary">Вт</div>
             <div class="item wednesday">Ср</div>
@@ -27,9 +34,8 @@
         
         <div class="div-select">
             <select class="select">
-                <option hidden>Выбор Бригады</option>
                 <option value="0">Бр1</option>
-                <option value="1">Бр2</option>
+                <option selected value="1">Бр2</option>
                 <option value="2">Бр3</option>
                 <option value="3">Бр4</option>
             </select>

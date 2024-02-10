@@ -1,14 +1,6 @@
 let date = new Date();
-const arrMonths = ['January','February','March','April','May','June','Jule','August','September','October','November','December'];
+const arrMonths =  ['January','February','March','April','May','June','Jule','August','September','October','November','December'];
 const arrMonthRu = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
-
-
-let currentMonth = arrMonths[date.getMonth()]; ;
-let currentMonthTwo = date.getMonth();
-let currentMonthRu = arrMonthRu[date.getMonth()]
-const nameMounth = document.createElement('div');
-let currentDay=date.getDate();
-
 const brigade = [
     {
         January:{
@@ -164,78 +156,57 @@ const brigade = [
     },   
 ]
 
-const select = document.querySelector('.select');
+const calendar = document.querySelector('.calendar');
+const nameMonth = document.querySelector('.month-text');
+const year = document.querySelector('.year-text');
+const daysWeek = document.querySelector('.days-grid');
+const btnMoveMonthToLeft = document.querySelector('.img-arrow-left');
+const btnMoveMonthToRigth = document.querySelector('.img-arrow-right');
+const selectBrigade = document.querySelector('.select');
 
-select.addEventListener('change',(e)=>{
-    getPropertyOfBrigade(e)
-    
+let currentMonth = arrMonths[date.getMonth()]; ;
+let currentMonthIndex= date.getMonth();
+let currentMonthRu = arrMonthRu[date.getMonth()];
+let currentDay=date.getDate();
+
+nameMonth.textContent = currentMonthRu;
+year.textContent = date.getFullYear();
+
+
+let indexSelect=1;
+let count=brigade[indexSelect][currentMonth].count;
+let startWorkDay=brigade[indexSelect][currentMonth].startWorkDay;
+let shift=brigade[indexSelect][currentMonth].shift;
+let days=brigade[indexSelect][currentMonth].days;
+getBrigadeDate(count,startWorkDay,shift,days);
+
+btnMoveMonthToLeft.addEventListener('click',()=>{
+    currentMonthIndex===0?false:currentMonthIndex--;
+    getSelectedMonth();
+    getBrigadeDate(count,startWorkDay,shift,days);
 });
 
-const calendar = document.querySelector('.calendar');
-const nameMonth = document.querySelector('.month');
-const daysWeek = document.querySelector('.days-grid');
+btnMoveMonthToRigth.addEventListener('click',()=>{
+    currentMonthIndex>10?false:currentMonthIndex++;
+    getSelectedMonth();
+    getBrigadeDate(count,startWorkDay,shift,days)
+});
 
-generateHeader();
-
-const switchMonthLeft = document.querySelector('.arrow-left');
-const switchMonthRight = document.querySelector('.arrow-right');
-let indexSelect;
-let count
-let startWorkDay
-let shift
-let days
-switchMonthLeft.addEventListener('click',()=>{
-    
-    
-    if(currentMonthTwo===0){
-        return;
-    }
-    else{
-        currentMonthTwo--
-    }
-    console.log(currentMonthTwo);
-    currentMonth = arrMonths[currentMonthTwo]
-    nameMounth.textContent=arrMonthRu[currentMonthTwo];
+function getSelectedMonth(){
+    currentMonth = arrMonths[currentMonthIndex]
+    nameMonth.textContent=arrMonthRu[currentMonthIndex];
     count = brigade[indexSelect][currentMonth].count;
     startWorkDay = brigade[indexSelect][currentMonth].startWorkDay;
     shift = brigade[indexSelect][currentMonth].shift;
     days = brigade[indexSelect][currentMonth].days;
-    getBrigadeDate(count,startWorkDay,shift,days)
-})
-switchMonthRight.addEventListener('click',()=>{
-    
-    if(currentMonthTwo>10){
-        return;
-    }
-    else{
-        currentMonthTwo++
-    }
-    console.log(currentMonthTwo);
-    currentMonth = arrMonths[currentMonthTwo]
-    nameMounth.textContent=arrMonthRu[currentMonthTwo];
-    count = brigade[indexSelect][currentMonth].count;
-    startWorkDay = brigade[indexSelect][currentMonth].startWorkDay;
-    shift = brigade[indexSelect][currentMonth].shift;
-    days = brigade[indexSelect][currentMonth].days;
-    getBrigadeDate(count,startWorkDay,shift,days)
-})
-function getPropertyOfBrigade(e){
-    indexSelect = +e.target.value;
-    count = brigade[indexSelect][currentMonth].count;
-    startWorkDay = brigade[indexSelect][currentMonth].startWorkDay;
-    shift = brigade[indexSelect][currentMonth].shift;
-    days = brigade[indexSelect][currentMonth].days;
-    getBrigadeDate(count,startWorkDay,shift,days)
 }
-
-
-
 
 function getBrigadeDate(count,startWorkDay,shift,days){ 
     daysWeek.innerHTML='';
     for(let i=0; i<shift; i++){
         let empty = document.createElement('div');
         empty.classList.add('item');
+        empty.style.border = '0 solid black';
         daysWeek.append(empty);
     }
     for(let i=0; i<days; i++){
@@ -245,19 +216,19 @@ function getBrigadeDate(count,startWorkDay,shift,days){
         if(i===currentDay-1) number.style.backgroundColor='pink';
         daysWeek.append(number);
     }
+
     const node = document.querySelectorAll('.node');
-    
     let accum = 0;
     
     for(let i=startWorkDay; i<node.length; i++){
         if(count<2){
             if(count===0){
                 let img = document.createElement('img');
-                img.src = './img/sun.svg'
+                img.src = './img/sun.svg';
                 node[i].append(img);
                 let morning = document.createElement('div')
                 morning.classList.add('morning-block');
-                morning.textContent='08:00'
+                morning.textContent='08:00';
                 node[i].append(morning); 
             }
             else{
@@ -279,20 +250,14 @@ function getBrigadeDate(count,startWorkDay,shift,days){
     }
 }
 
-
-function generateHeader(){
-    const arrowLeft = document.createElement('div');
-    const arrowRight = document.createElement('div');
-    arrowLeft.textContent='<'
-    arrowLeft.classList.add('arrow-left');
-    arrowRight.textContent='>';
-    arrowRight.classList.add('arrow-right');
-    nameMounth.textContent=arrMonthRu[date.getMonth()];
-    nameMonth.append(arrowLeft);
-    nameMonth.append(nameMounth);
-    nameMonth.append(arrowRight);
-}
-
+selectBrigade.addEventListener('change',(e)=>{
+    indexSelect = +e.target.value;
+    count = brigade[indexSelect][currentMonth].count;
+    startWorkDay = brigade[indexSelect][currentMonth].startWorkDay;
+    shift = brigade[indexSelect][currentMonth].shift;
+    days = brigade[indexSelect][currentMonth].days;
+    getBrigadeDate(count,startWorkDay,shift,days)
+});
 
 
 
