@@ -96,8 +96,8 @@ body .main .days-grid .node .night-block {
   color: white;
   font-size: 15px;
 }
-body .main .active {
-  background-color: green;
+body .main .highlightingToday {
+  background-color: rgb(71, 165, 16);
   color: white;
 }
 body .main .div-select {

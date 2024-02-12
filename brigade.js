@@ -154,6 +154,6 @@ export const brigade = [
     }
 ]
 
-getLearYearOfFebruary();
+
 
 
