@@ -36,7 +36,6 @@ body{
                 .month-year{
                     display: flex;
                     align-items: center;
-                    //width: 160px;
                     height: 40px;
                     .year-text{
                         margin-left: 5px;
@@ -94,7 +93,6 @@ body{
                     color: white;
                     font-size: 15px;
                 }
-                
             }
         }
         .highlightingToday{
@@ -112,5 +110,4 @@ body{
             }
         }
     }
-    
 }

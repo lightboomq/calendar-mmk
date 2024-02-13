@@ -16,27 +16,24 @@ let currenFullYear  = date.getFullYear();
 let currentMonth = arrMonths[date.getMonth()];
 let currentMonthIndex= date.getMonth();
 let currentMonthRu = arrMonthRu[date.getMonth()];
-let highlightingToday=date.getDate()-1;
+let highlightingToday=date.getDate();
 
 nameMonth.textContent = currentMonthRu;
-year.textContent = date.getFullYear();
-
-let indexSelect=1;
-let count=brigade[indexSelect][currentMonth].count;
-let startWorkDay=brigade[indexSelect][currentMonth].startWorkDay;
-let days = new Date(currenFullYear,currentMonthIndex+1,0).getDate();
+year.textContent = currenFullYear;
 
 date = new Date(currenFullYear,currentMonthIndex,1) 
-
-let dayShift = date.getDay()-1;
-
+let indexSelect=1;
 for(let i=0; i<4; i++){
     brigade[i][currentMonth].highlightingToday=true; //пуш флага для подсвечивания сегодняшнего дня; 
 }
 
-getBrigadeDate(count,startWorkDay,dayShift,days);
+getBrigadeDate();
 
-function getBrigadeDate(count,startWorkDay,dayShift,days){ 
+function getBrigadeDate(){
+    let count=brigade[indexSelect][currentMonth].count;
+    const startWorkDay=brigade[indexSelect][currentMonth].startWorkDay;
+    const days = new Date(currenFullYear,currentMonthIndex+1,0).getDate();
+    const dayShift=date.getDay()-1===-1?6:date.getDay()-1; //проверка на сентябрь и декабрь месяц т.к они начинаются с воскресенья.
     daysWeek.innerHTML='';
     for(let i=0; i<dayShift; i++){
         let empty = document.createElement('div');
@@ -44,37 +41,37 @@ function getBrigadeDate(count,startWorkDay,dayShift,days){
         empty.style.border = '0 solid black';
         daysWeek.append(empty);
     }
-    for(let i=0; i<days; i++){
+    for(let i=1; i<=days; i++){
         let number = document.createElement('div');
         number.classList.add('item','node');
-        number.textContent=i+1;
-        console.log(highlightingToday);
+        number.textContent = i
         if(i===highlightingToday&&brigade[indexSelect][currentMonth].highlightingToday) number.classList.add('highlightingToday');
         daysWeek.append(number);
     }
 
     const node = document.querySelectorAll('.node');
-    let accum = 0; // счетчик, к-во смен за выбраный месяц (не используется).
+    let accum = 0; // счетчик, всего к-во смен за выбраный месяц (не используется).
     
     for(let i=startWorkDay; i<node.length; i++){
         if(count<2){
+            let block = document.createElement('div')
             if(count===0){
+                node[i].textContent = i+1;
                 let img = document.createElement('img');
                 img.src = './img/sun.svg';
                 node[i].append(img);
-                let morning = document.createElement('div')
-                morning.classList.add('morning-block');
-                morning.textContent='8:00';
-                node[i].append(morning); 
+                block.classList.add('morning-block');
+                block.textContent='8:00';
+                node[i].append(block); 
             }
             else{
+                node[i].textContent = i+1;
                 let img = document.createElement('img');
                 img.src = './img/moon.svg'
                 node[i].append(img);
-                let night = document.createElement('div')
-                night.classList.add('night-block');
-                night.textContent='20:00'
-                node[i].append(night); 
+                block.classList.add('night-block');
+                block.textContent='20:00'
+                node[i].append(block); 
             }
             accum++;
             count++;
@@ -87,34 +84,26 @@ function getBrigadeDate(count,startWorkDay,dayShift,days){
 }
 selectBrigade.addEventListener('change',(e)=>{
     indexSelect = +e.target.value;
-    count = brigade[indexSelect][currentMonth].count;
-    startWorkDay = brigade[indexSelect][currentMonth].startWorkDay;
     date = new Date(currenFullYear,currentMonthIndex,1)
-    dayShift=date.getDay()-1===-1?6:date.getDay()-1; //проверка на сентябрь и декабрь месяц т.к они начинаются с воскресенья.
-    days = new Date(currenFullYear,currentMonthIndex+1,0).getDate();
-    getBrigadeDate(count,startWorkDay,dayShift,days)
+    getBrigadeDate()
 });
 
 btnMoveMonthToLeft.addEventListener('click',()=>{
     currentMonthIndex===0?false:currentMonthIndex--;
     getSelectedMonth();
-    getBrigadeDate(count,startWorkDay,dayShift,days);
+    getBrigadeDate();
 });
 
 btnMoveMonthToRigth.addEventListener('click',()=>{
     currentMonthIndex>10?false:currentMonthIndex++;
     getSelectedMonth();
-    getBrigadeDate(count,startWorkDay,dayShift,days);
+    getBrigadeDate();
 });
 
 function getSelectedMonth(){
     currentMonth = arrMonths[currentMonthIndex]
     nameMonth.textContent=arrMonthRu[currentMonthIndex];
-    count = brigade[indexSelect][currentMonth].count;
-    startWorkDay = brigade[indexSelect][currentMonth].startWorkDay;
     date = new Date(currenFullYear,currentMonthIndex,1);
-    dayShift=date.getDay()-1===-1?6:date.getDay()-1; //проверка на сентябрь и декабрь месяц т.к они начинаются с воскресенья.
-    days = new Date(currenFullYear,currentMonthIndex+1,0).getDate();
 }
 
 
