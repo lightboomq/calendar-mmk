@@ -10,6 +10,11 @@ const btnMoveMonthToLeft = document.querySelector('.img-arrow-left');
 const btnMoveMonthToRigth = document.querySelector('.img-arrow-right');
 const selectBrigade = document.querySelector('.select');
 
+const emptyCell = document.querySelector('.emptyCell')
+const weekendCell = document.querySelector('.weekendCell');
+const morningCell = document.querySelector('.morningCell');
+const nightCell = document.querySelector('.nightCell');
+
 let date = new Date();
 
 let currenFullYear  = date.getFullYear();
@@ -33,51 +38,35 @@ function getBrigadeDate(){
     let count=brigade[indexSelect][currentMonth].count;
     const startWorkDay=brigade[indexSelect][currentMonth].startWorkDay;
     const days = new Date(currenFullYear,currentMonthIndex+1,0).getDate();
-    const dayShift=date.getDay()-1===-1?6:date.getDay()-1; //проверка на сентябрь и декабрь месяц т.к они начинаются с воскресенья.
+    const dayShift=date.getDay()===0?6:date.getDay()-1; //проверка на сентябрь и декабрь месяц т.к они начинаются с воскресенья.
     daysWeek.innerHTML='';
     for(let i=0; i<dayShift; i++){
-        let empty = document.createElement('div');
-        empty.classList.add('item');
-        empty.style.border = '0 solid black';
-        daysWeek.append(empty);
+        const emptyCellClone = emptyCell.cloneNode(false);
+        daysWeek.append(emptyCellClone);
     }
     for(let i=1; i<=days; i++){
-        let number = document.createElement('div');
-        number.classList.add('item','node');
-        number.textContent = i;
-        let block = document.createElement('div');
-        let img = document.createElement('img');
-        img.src = './img/house.svg';
-        block.classList.add('weekend-block');
-        block.textContent='Вых...'
-        if(i===highlightingToday&&brigade[indexSelect][currentMonth].highlightingToday) number.classList.add('highlightingToday');
-        number.append(img,block);
-        daysWeek.append(number);
+        const weekendCellClone = weekendCell.cloneNode(true);
+        weekendCellClone.querySelector('.number').textContent = i;
+        if(i===highlightingToday&&brigade[indexSelect][currentMonth].highlightingToday) weekendCellClone.classList.add('highlightingToday');
+        daysWeek.append(weekendCellClone);
     }
 
     const node = document.querySelectorAll('.node');
-    let accum = 0; // счетчик, всего к-во смен за выбраный месяц (не используется).
+    let accum = 0; 
     
     for(let i=startWorkDay; i<node.length; i++){
         if(count<2){
-            let block = document.createElement('div')
             if(count===0){
-                node[i].textContent = i+1;
-                let img = document.createElement('img');
-                img.src = './img/sun.svg';
-                node[i].append(img);
-                block.classList.add('morning-block');
-                block.textContent='8:00';
-                node[i].append(block); 
+                const morningCellClone=morningCell.cloneNode(true);
+                morningCellClone.querySelector('.number').textContent = i+1;
+                node[i].textContent = ''; 
+                node[i].append(morningCellClone);
             }
             else{
-                node[i].textContent = i+1;
-                let img = document.createElement('img');
-                img.src = './img/moon.svg'
-                node[i].append(img);
-                block.classList.add('night-block');
-                block.textContent='20:00'
-                node[i].append(block); 
+                const nightCellClone=nightCell.cloneNode(true);
+                nightCellClone.querySelector('.number').textContent = i+1;
+                node[i].textContent = '';
+                node[i].append(nightCellClone);
             }
             accum++;
             count++;
@@ -111,7 +100,6 @@ function getSelectedMonth(){
     nameMonth.textContent=arrMonthRu[currentMonthIndex];
     date = new Date(currenFullYear,currentMonthIndex,1);
 }
-
 
 
 

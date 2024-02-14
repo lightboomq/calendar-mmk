@@ -63,13 +63,15 @@ body{
             grid-template-columns: 14% 14% 14% 14% 14% 15% 15% ;
             margin: auto;
             gap:5px;
+            .emptyCell{
+                border: 0 solid black;
+            }
             .item{
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
                 font-size: 17px;
                 height: 40px;
-                border: 1px solid black;
             }
             .node{
                 display: flex;
@@ -103,6 +105,7 @@ body{
             }
             
         }
+      
         .highlightingToday{
             background-color: rgb(173, 174, 177);
             color:white;

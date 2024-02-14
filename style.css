@@ -65,13 +65,15 @@ body .main .days-grid {
   margin: auto;
   gap: 5px;
 }
+body .main .days-grid .emptyCell {
+  border: 0 solid black;
+}
 body .main .days-grid .item {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   font-size: 17px;
   height: 40px;
-  border: 1px solid black;
 }
 body .main .days-grid .node {
   display: flex;
