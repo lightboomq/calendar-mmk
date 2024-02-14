@@ -79,6 +79,13 @@ body{
                     width: 17px;
                     height: 17px;
                 }
+                .weekend-block{
+                    width: 100%;
+                    height: 18px;
+                    background-color: rgb(49, 161, 39);
+                    color: white;
+                    font-size: 15px;
+                }
                 .morning-block{
                     width: 100%;
                     height: 18px;
@@ -94,9 +101,10 @@ body{
                     font-size: 15px;
                 }
             }
+            
         }
         .highlightingToday{
-            background-color: rgb(71, 165, 16);
+            background-color: rgb(173, 174, 177);
             color:white;
         }
         .div-select{

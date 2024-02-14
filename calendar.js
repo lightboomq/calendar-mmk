@@ -44,8 +44,14 @@ function getBrigadeDate(){
     for(let i=1; i<=days; i++){
         let number = document.createElement('div');
         number.classList.add('item','node');
-        number.textContent = i
+        number.textContent = i;
+        let block = document.createElement('div');
+        let img = document.createElement('img');
+        img.src = './img/house.svg';
+        block.classList.add('weekend-block');
+        block.textContent='Вых...'
         if(i===highlightingToday&&brigade[indexSelect][currentMonth].highlightingToday) number.classList.add('highlightingToday');
+        number.append(img,block);
         daysWeek.append(number);
     }
 
