@@ -36,35 +36,32 @@
             <div class="item node weekendCell">
                 <p class="number"></p>
                 <img src="./img/house.svg">
-                <div class="weekend-block">Вых...</div>
+                <span class="weekend-block">Вых...</span>
             </div>
 
             <div class="item node morningCell">
                 <p class="number"></p>
                 <img src="./img/sun.svg">
-                <div class="morning-block">08:00</div>
+                <span class="morning-block">08:00</span>
             </div>
 
             <div class="item node nightCell">
                 <p class="number"></p>
                 <img src="./img/moon.svg">
-                <div class="night-block">20:00</div>
+                <span class="night-block">20:00</span>
             </div>
         </div>
     
-        
-        <div class="div-select">
-            <select class="select">
-                <option value="0">Бр1</option>
-                <option selected value="1">Бр2</option>
-                <option value="2">Бр3</option>
-                <option value="3">Бр4</option>
-            </select>
+        <p class="total"></p>
+        <div class="radio-block">
+            <label><input type="radio" name="brigade" value="0"><span>Бр 1</span></label>
+            <label><input type="radio" name="brigade" value="1" checked><span>Бр 2</span></label>
+            <label><input type="radio" name="brigade" value="2"><span>Бр 3</span></label>
+            <label><input type="radio" name="brigade" value="3"><span>Бр 4</span></label>
         </div>
     </div>
-    
-   
-<script type="module" src="calendar.js"></script>
 
+    <script type="module" src="calendar.js"></script>
+    
 </body>
 </html>

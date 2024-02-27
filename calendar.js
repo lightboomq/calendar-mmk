@@ -8,12 +8,16 @@ const year = document.querySelector('.year-text');
 const daysWeek = document.querySelector('.days-grid');
 const btnMoveMonthToLeft = document.querySelector('.img-arrow-left');
 const btnMoveMonthToRigth = document.querySelector('.img-arrow-right');
-const selectBrigade = document.querySelector('.select');
 
-const emptyCell = document.querySelector('.emptyCell')
+const radio = document.querySelector('.radio-block')
+
+
+const emptyCell = document.querySelector('.emptyCell');
 const weekendCell = document.querySelector('.weekendCell');
 const morningCell = document.querySelector('.morningCell');
 const nightCell = document.querySelector('.nightCell');
+
+const total = document.querySelector('.total');
 
 let date = new Date();
 
@@ -70,6 +74,7 @@ function getBrigadeDate(){
             }
             accum++;
             count++;
+            //total.textContent=`В этом месяце ${accum} смен`;
         }
         else{ 
             i++
@@ -77,11 +82,12 @@ function getBrigadeDate(){
         }
     }
 }
-selectBrigade.addEventListener('change',(e)=>{
-    indexSelect = +e.target.value;
-    date = new Date(currenFullYear,currentMonthIndex,1)
-    getBrigadeDate()
-});
+
+radio.addEventListener('change',(e)=>{
+    indexSelect =+e.target.value
+    date = new Date(currenFullYear,currentMonthIndex,1);
+    getBrigadeDate();
+})
 
 btnMoveMonthToLeft.addEventListener('click',()=>{
     currentMonthIndex===0?false:currentMonthIndex--;
@@ -96,14 +102,16 @@ btnMoveMonthToRigth.addEventListener('click',()=>{
 });
 
 function getSelectedMonth(){
-    currentMonth = arrMonths[currentMonthIndex]
+    currentMonth = arrMonths[currentMonthIndex];
     nameMonth.textContent=arrMonthRu[currentMonthIndex];
     date = new Date(currenFullYear,currentMonthIndex,1);
-}
+};
 
 
 
 
 
+
+     
 
 

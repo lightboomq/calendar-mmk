@@ -110,14 +110,27 @@ body{
             background-color: rgb(173, 174, 177);
             color:white;
         }
-        .div-select{
+        .radio-block{
             display: flex;
-            justify-content: center;
-            margin: auto;
-            width: 150px;
-            margin-top: 5px;
-            .select{
+            justify-content: space-between;     
+            width: 100%;
+            margin-top: 15px;
+            label{
+                display: flex;
+                align-items: center;
                 cursor: pointer;
+                input{
+                    height: 15px;
+                    width: 15px;
+                    margin-right: 5px;
+                    cursor: pointer;
+                    color: pink;
+                }
+                span{
+                    border: 1px solid #d8dbdd;
+                    padding: 2px 7px 2px 7px;
+                    border-radius: 5px;
+                }
             }
         }
     }
