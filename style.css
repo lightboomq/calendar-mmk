@@ -15,7 +15,6 @@ body .main .calendar {
   text-align: center;
   justify-content: center;
   grid-template-columns: 14% 14% 14% 14% 14% 15% 15%;
-  margin: auto;
   gap: 5px;
 }
 body .main .calendar .item {
@@ -56,13 +55,17 @@ body .main .calendar .saturday {
 body .main .calendar .sunday {
   color: red;
 }
+body .main .total {
+  margin-top: 10px;
+  font-weight: 900;
+  text-align: center;
+}
 body .main .days-grid {
   display: grid;
   width: 100%;
   text-align: center;
   justify-content: center;
   grid-template-columns: 14% 14% 14% 14% 14% 15% 15%;
-  margin: auto;
   gap: 5px;
 }
 body .main .days-grid .emptyCell {
@@ -125,7 +128,6 @@ body .main .radio-block label input {
   width: 15px;
   margin-right: 5px;
   cursor: pointer;
-  color: pink;
 }
 body .main .radio-block label span {
   border: 1px solid #d8dbdd;

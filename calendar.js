@@ -11,7 +11,6 @@ const btnMoveMonthToRigth = document.querySelector('.img-arrow-right');
 
 const radio = document.querySelector('.radio-block')
 
-
 const emptyCell = document.querySelector('.emptyCell');
 const weekendCell = document.querySelector('.weekendCell');
 const morningCell = document.querySelector('.morningCell');
@@ -37,7 +36,6 @@ for(let i=0; i<4; i++){
 }
 
 getBrigadeDate();
-
 function getBrigadeDate(){
     let count=brigade[indexSelect][currentMonth].count;
     const startWorkDay=brigade[indexSelect][currentMonth].startWorkDay;
@@ -74,7 +72,7 @@ function getBrigadeDate(){
             }
             accum++;
             count++;
-            //total.textContent=`В этом месяце ${accum} смен`;
+            total.textContent=`В этом месяце ${accum} смен`;
         }
         else{ 
             i++
@@ -87,7 +85,7 @@ radio.addEventListener('change',(e)=>{
     indexSelect =+e.target.value
     date = new Date(currenFullYear,currentMonthIndex,1);
     getBrigadeDate();
-})
+});
 
 btnMoveMonthToLeft.addEventListener('click',()=>{
     currentMonthIndex===0?false:currentMonthIndex--;
