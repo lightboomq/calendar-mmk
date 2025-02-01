@@ -2,119 +2,82 @@
 export const brigade = [
     {
         January:{
-            count:0,startWorkDay:2 
-        },
-        February:{
-            count:1,startWorkDay:0
-        },
-        March:{
-            count:0,startWorkDay:2
-        },
-        April:{
-            count:1,startWorkDay:0
-        },
-        May:{
-            count:0,startWorkDay:1
-        },
-        June:{
-            count:0,startWorkDay:2
-        },
-        Jule:{
-            count:0,startWorkDay:0
-        },
-        August:{
-            count:0,startWorkDay:1
-        },
-        September:{
-            count:0,startWorkDay:2
-        },
-        October:{
-            count:0,startWorkDay:0
-        },
-        November:{
-            count:0,startWorkDay:1
-        },
-        December:{
-            count:1,startWorkDay:0
-        },
-    },
-    {
-        January:{
             count:0,startWorkDay:0 
         },
         February:{
             count:0,startWorkDay:1
         },
         March:{
-            count:0,startWorkDay:0
+            count:0,startWorkDay:1
         },
         April:{
-            count:0,startWorkDay:1
+            count:0,startWorkDay:2
         },
         May:{
-            count:1,startWorkDay:0
+            count:0,startWorkDay:0
         },
         June:{
-            count:0,startWorkDay:0
+            count:0,startWorkDay:1
         },
         Jule:{
-            count:0,startWorkDay:2
+            count:1,startWorkDay:0
         },
         August:{
-            count:1,startWorkDay:0
-        },
-        September:{
             count:0,startWorkDay:0
         },
-        October:{
-            count:0,startWorkDay:2
+        September:{
+            count:0,startWorkDay:1
         },
-        November:{
+        October:{
             count:1,startWorkDay:0
         },
+        November:{
+            count:0,startWorkDay:0
+        },
         December:{
-            count:0,startWorkDay:1
+            count:0,startWorkDay:2
         },
     },
     {
         January:{
-            count:0,startWorkDay:1 
+            count:0,startWorkDay:2 
         },
         February:{
-            count:0,startWorkDay:2
+            count:1,startWorkDay:0
         },
         March:{
-            count:0,startWorkDay:1
+            count:1,startWorkDay:0
         },
         April:{
-            count:0,startWorkDay:2
+            count:0,startWorkDay:0
         },
         May:{
-            count:0,startWorkDay:0
+            count:0,startWorkDay:2
         },
         June:{
-            count:0,startWorkDay:1
+            count:1,startWorkDay:0
         },
         Jule:{
-            count:1,startWorkDay:0
-        },
-        August:{
-            count:0,startWorkDay:0
-        },
-        September:{
             count:0,startWorkDay:1
         },
-        October:{
+        August:{
+            count:0,startWorkDay:2
+        },
+        September:{
             count:1,startWorkDay:0
         },
+        October:{
+            count:0,startWorkDay:1
+        },
         November:{
-            count:0,startWorkDay:0
+            count:2,startWorkDay:0
         },
         December:{
-            count:0,startWorkDay:2
+            count:0,startWorkDay:0
         },
     },
     {
+        //3br
         January:{
             count:1,startWorkDay:0 
         },
@@ -122,34 +85,72 @@ export const brigade = [
             count:0,startWorkDay:0
         },
         March:{
-            count:1,startWorkDay:0
+            count:0,startWorkDay:0
         },
         April:{
-            count:0,startWorkDay:0
+            count:0,startWorkDay:1
         },
         May:{
-            count:0,startWorkDay:2
+            count:1,startWorkDay:0
         },
         June:{
-            count:1,startWorkDay:0
+            count:0,startWorkDay:0
         },
         Jule:{
-            count:0,startWorkDay:1
+            count:0,startWorkDay:2
         },
         August:{
-            count:0,startWorkDay:2
-        },
-        September:{
             count:1,startWorkDay:0
         },
+        September:{
+            count:0,startWorkDay:0
+        },
         October:{
-            count:0,startWorkDay:1
+            count:2,startWorkDay:0
         },
         November:{
-            count:0,startWorkDay:2
+            count:1,startWorkDay:0
         },
         December:{
+            count:0,startWorkDay:1
+        },
+    },
+    {
+        January:{
+            count:0,startWorkDay:1
+        },
+        February:{
+            count:0,startWorkDay:2
+        },
+        March:{
+            count:0,startWorkDay:2
+        },
+        April:{
+            count:1,startWorkDay:0
+        },
+        May:{
+            count:0,startWorkDay:1
+        },
+        June:{
+            count:0,startWorkDay:2
+        },
+        Jule:{
             count:0,startWorkDay:0
+        },
+        August:{
+            count:0,startWorkDay:1
+        },
+        September:{
+            count:0,startWorkDay:2
+        },
+        October:{
+            count:0,startWorkDay:0
+        },
+        November:{
+            count:0,startWorkDay:1
+        },
+        December:{
+            count:1,startWorkDay:0
         }
     }
 ]
